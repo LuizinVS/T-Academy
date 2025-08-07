@@ -1,2 +1,2 @@
-# TAcademy
+# T-Academy
 repositório T-Academy
