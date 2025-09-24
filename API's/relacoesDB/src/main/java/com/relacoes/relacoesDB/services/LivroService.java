@@ -2,6 +2,8 @@ package com.relacoes.relacoesDB.services;
 
 import com.relacoes.relacoesDB.models.Livro;
 import com.relacoes.relacoesDB.repositories.LivroRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,15 +16,15 @@ public class LivroService {
         this.livroRepository = livroRepository;
     }
 
-    public List<Livro> getLivros(){
-        return livroRepository.findAll();
+    public Page<Livro> getLivros(Pageable pageable){
+        return livroRepository.findAll(pageable);
     }
 
     public Livro criarLivro(Livro livro){
         return livroRepository.save(livro);
     }
 
-    public List<Livro> findByAutorNacionalidade(String nacionalidade){
-        return livroRepository.findByAutorNacionalidadeIgnoreCase(nacionalidade);
+    public Page<Livro> findByAutorNacionalidade(String nacionalidade, Pageable pageable){
+        return livroRepository.findByAutorNacionalidadeIgnoreCase(nacionalidade, pageable);
     }
 }

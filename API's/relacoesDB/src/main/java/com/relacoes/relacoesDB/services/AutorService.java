@@ -2,6 +2,8 @@ package com.relacoes.relacoesDB.services;
 
 import com.relacoes.relacoesDB.models.Autor;
 import com.relacoes.relacoesDB.repositories.AutorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +16,8 @@ public class AutorService {
         this.autorRepository = autorRepository;
     }
 
-    public List<Autor> getAutores() {
-        return autorRepository.findAll();
+    public Page<Autor> getAutores(Pageable pageable) {
+        return autorRepository.findAll(pageable);
     }
 
     public Autor createAutor(Autor autor) {
